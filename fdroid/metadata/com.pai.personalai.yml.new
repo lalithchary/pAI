@@ -1,0 +1,50 @@
+Categories: internet
+License: GPL-3.0-only
+WebSite: https://github.com/lalithchary/pAI
+SourceCode: https://github.com/lalithchary/pAI
+IssueTracker: https://github.com/lalithchary/pAI/issues
+Changelog: https://github.com/lalithchary/pAI/releases
+
+Name: pAI
+AutoName: pAI
+Summary: Your Personal AI Companion
+Description: |-
+  pAI is a free, open-source Android app that brings the power of AI directly to your pocket. Connect to your favorite AI backend, chat intelligently, manage configurations, and experience a beautifully crafted Material Design 3 interface.
+
+RepoType: git
+Repo: https://github.com/lalithchary/pAI.git
+
+Builds:
+  - versionName: 1.0.0
+    versionCode: 1
+    commit: v1.0.0
+    subdir: app
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-17-jdk
+    gradle:
+      - yes
+
+    ndk: 25.1.8937393
+
+    prebuild: echo "sdk.dir=$ANDROID_HOME" > local.properties
+
+    scanignore:
+      - logo/*
+      - docs/*
+
+    scopes:
+      - .*
+
+    build:
+      - export GRADLE_OPTS="-Dorg.gradle.jvmargs=-Xmx4096m -Dorg.gradle.parallel=true"
+      - ./gradlew assembleRelease
+
+    ndk: 25.1.8937393
+
+MaintainerNotes: |-
+  Requires Android SDK 34 and JDK 17.
+  Build tested with Gradle 8.5.
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags

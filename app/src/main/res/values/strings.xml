@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">pAI</string>
+    <string name="app_full_name">pAI (Personal AI)</string>
+
+    <string name="login_title">Welcome to pAI</string>
+    <string name="login_subtitle">Sign in to your account</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_button">Sign In</string>
+    <string name="login_error_invalid">Invalid email or password</string>
+
+    <string name="config_title">Server Configuration</string>
+    <string name="config_base_url_hint">Base URL (e.g. https://api.openai.com)</string>
+    <string name="config_api_key_hint">API Key</string>
+    <string name="config_model_hint">Select Model</string>
+    <string name="config_test_button">Test Connection</string>
+    <string name="config_save_button">Save Configuration</string>
+    <string name="config_test_success">Connection successful!</string>
+    <string name="config_test_failed">Connection failed. Check your details.</string>
+    <string name="config_saved">Configuration saved successfully</string>
+    <string name="config_models_fetched">Models loaded successfully</string>
+    <string name="config_fetch_models">Fetch Available Models</string>
+
+    <string name="chat_title">pAI</string>
+    <string name="chat_input_hint">Type a message…</string>
+    <string name="chat_send">Send</string>
+    <string name="chat_empty">Start a conversation with your AI</string>
+    <string name="chat_error">Failed to send message</string>
+    <string name="chat_retry">Retry</string>
+    <string name="chat_typing">AI is typing…</string>
+
+    <string name="attachment_add">Add Attachment</string>
+    <string name="attachment_image">Image</string>
+    <string name="attachment_document">Document</string>
+    <string name="attachment_max_size">File size must be under 10MB</string>
+    <string name="attachment_unsupported">Unsupported file type</string>
+    <string name="attachment_uploading">Uploading…</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_server">Server Configuration</string>
+    <string name="settings_clear_history">Clear Chat History</string>
+    <string name="settings_clear_history_confirm">Are you sure? This cannot be undone.</string>
+    <string name="settings_logout">Logout</string>
+    <string name="settings_logout_confirm">Are you sure you want to logout?</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version %1$s</string>
+
+    <string name="common_ok">OK</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="common_error">Error</string>
+    <string name="common_loading">Loading…</string>
+    <string name="common_retry">Retry</string>
+    <string name="common_copy">Copy</string>
+    <string name="common_share">Share</string>
+    <string name="common_copied">Copied to clipboard</string>
+</resources>
