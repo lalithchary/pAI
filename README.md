@@ -24,9 +24,9 @@
 
 ## 📸 Screenshots
 
-| Chat Screen | Server Config | Settings |
-|-------------|---------------|----------|
-| *Add screenshot here* | *Add screenshot here* | *Add screenshot here* |
+| Chat Screen | Server Config | Settings | Light mode | Recent chats |
+|-------------|---------------|----------|------------|--------------|
+| (https://github.com/lalithchary/pAI/blob/main/screenshots/ss1.png) | (https://github.com/lalithchary/pAI/blob/main/screenshots/ss3.png) | (https://github.com/lalithchary/pAI/blob/main/screenshots/ss2.png) |(https://github.com/lalithchary/pAI/blob/main/screenshots/ss4.png) | (https://github.com/lalithchary/pAI/blob/main/screenshots/ss5.png) |
 
 ---
 
@@ -144,5 +144,5 @@ If you find this project useful, please consider giving it a star!
 ---
 
 <p align="center">
-  Made with ❤️ by the pAI community
+  Made with ❤️ by lalithchary
 </p>
