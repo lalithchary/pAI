@@ -37,7 +37,7 @@ pAI is submitted to F-Droid and will be available soon.
 Once approved, you can install it directly from the F-Droid app.
 
 ### GitHub Releases
-Download the latest APK or AAB from the [Releases](https://github.com/lalithchary/pAI/releases) page.
+Download the latest APK from the [![Latest Release](https://img.shields.io/github/release/lalithchary/pAI.svg)](https://github.com/lalithchary/pAI/releases) page.
 
 ### Alternative Stores
 You can also sideload the APK from trusted alternative app stores.
