@@ -24,8 +24,8 @@
 
 ## 📸 Screenshots
 
-| Chat Screen | Server Config | Settings |
-|-------------|---------------|----------|
+| Chat Screen           | Server Config         | Settings              |
+| --------------------- | --------------------- | --------------------- |
 | *Add screenshot here* | *Add screenshot here* | *Add screenshot here* |
 
 ---
@@ -33,13 +33,16 @@
 ## 📥 Download
 
 ### F-Droid (Recommended)
+
 pAI is submitted to F-Droid and will be available soon.  
 Once approved, you can install it directly from the F-Droid app.
 
 ### GitHub Releases
+
 Download the latest APK or AAB from the [Releases](https://github.com/lalithchary/pAI/releases) page.
 
 ### Alternative Stores
+
 You can also sideload the APK from trusted alternative app stores.
 
 ---
@@ -47,35 +50,45 @@ You can also sideload the APK from trusted alternative app stores.
 ## 🔨 Build from Source
 
 ### Prerequisites
+
 - Android Studio Hedgehog (2023.1.1) or newer
 - JDK 17
 - Android SDK API 34
 
 ### Steps
+
 1. **Clone the repository**
+   
    ```bash
    git clone https://github.com/lalithchary/pAI.git
    cd pAI
    ```
 
 2. **Open in Android Studio**
+   
    - Open the project folder in Android Studio
    - Wait for Gradle sync to complete
 
 3. **Build the app**
+   
    ```bash
    ./gradlew assembleRelease
    ```
+   
    The release APK will be generated at:
+   
    ```
    app/build/outputs/apk/release/app-release.apk
    ```
 
 4. **Generate signed bundle (for distribution)**
+   
    ```bash
    ./gradlew bundleRelease
    ```
+   
    The signed AAB will be generated at:
+   
    ```
    app/build/outputs/bundle/release/app-release.aab
    ```
@@ -122,6 +135,7 @@ See the [LICENSE](LICENSE) file for details.
 ## 🙋 Support
 
 If you encounter any issues or have questions:
+
 - Open an [Issue](https://github.com/lalithchary/pAI/issues)
 - Check the [Discussions](https://github.com/lalithchary/pAI/discussions) tab
 
@@ -144,5 +158,5 @@ If you find this project useful, please consider giving it a star!
 ---
 
 <p align="center">
-  Made with ❤️ by the pAI community
+  Made with ❤️ by lalithchary
 </p>
