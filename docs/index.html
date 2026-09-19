@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="pAI - Your Personal AI Companion. Free, Open Source Android App to connect with custom AI providers.">
+    <title>pAI | Your Personal AI Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2fe; --primary-dark: #4facfe; --accent: #00f2fe;
+            --bg: #0a0b10; --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-nav: rgba(10, 11, 16, 0.8); --text: #f8fafc;
+            --text-muted: #94a3b8; --border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .light-mode {
+            --primary: #2563eb; --primary-dark: #1d4ed8; --accent: #3b82f6;
+            --bg: #f8fafc; --bg-card: #ffffff; --bg-nav: rgba(248, 250, 252, 0.8);
+            --text: #0f172a; --text-muted: #64748b;
+            --border: rgba(0, 0, 0, 0.1); --glass-border: rgba(0, 0, 0, 0.05);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+        h1, h2, h3, .logo-text { font-family: 'Outfit', sans-serif; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden; }
+        .glow::after { content: ''; position: absolute; top: -10%; left: -10%; width: 40%; height: 40%; background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%); filter: blur(80px); }
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--bg-nav); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo img { width: 32px; height: 32px; filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.3)); }
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-muted); }
+        .nav-links a:hover { color: var(--text); }
+        .theme-toggle { background: var(--bg-card); border: 1px solid var(--border); padding: 8px; border-radius: 10px; cursor: pointer; color: var(--text); display: flex; align-items: center; justify-content: center; }
+        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+        .hero { padding: 160px 0 100px; text-align: center; position: relative; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em; }
+        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 40px; }
+        .btn-group { display: flex; gap: 16px; justify-content: center; margin-bottom: 60px; }
+        .btn { padding: 14px 28px; border-radius: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #000; box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(0, 242, 254, 0.4); }
+        .btn-secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--text-muted); }
+        .mockup-container { position: relative; max-width: 800px; margin: 0 auto; perspective: 1000px; }
+        .mockup { width: 100%; border-radius: 24px; box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5); border: 4px solid var(--border); transform: rotateX(5deg); transition: var(--transition); }
+        .mockup:hover { transform: rotateX(0deg) scale(1.02); }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 16px; }
+        .section-title p { color: var(--text-muted); font-size: 1.1rem; }
+        .features { padding: 100px 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--glass-border); padding: 32px; border-radius: 24px; transition: var(--transition); position: relative; overflow: hidden; }
+        .feature-card:hover { border-color: var(--primary); background: rgba(0, 242, 254, 0.03); transform: translateY(-5px); }
+        .feature-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+        .feature-card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .showcase { padding: 100px 0; background: rgba(255, 255, 255, 0.01); }
+        .showcase-tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+        .tab-btn { padding: 10px 20px; border-radius: 100px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; font-weight: 500; transition: var(--transition); }
+        .tab-btn.active { background: var(--primary); color: #000; border-color: var(--primary); }
+        .gallery-content { display: flex; align-items: center; gap: 48px; background: var(--bg-card); padding: 48px; border-radius: 32px; border: 1px solid var(--glass-border); min-height: 500px; }
+        .gallery-image { flex: 1; max-width: 320px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); border: 4px solid var(--border); }
+        .gallery-text { flex: 1.5; }
+        .gallery-text h3 { font-size: 2rem; margin-bottom: 16px; color: var(--primary); }
+        .gallery-text p { font-size: 1.1rem; color: var(--text-muted); }
+        .build-section { padding: 100px 0; }
+        .code-block { background: #010101; padding: 24px; border-radius: 16px; border: 1px solid var(--border); position: relative; font-family: 'Courier New', Courier, monospace; overflow-x: auto; margin-top: 20px; }
+        .code-block code { color: #d1d5db; font-size: 0.9rem; white-space: pre; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; padding: 6px 12px; background: #1f2937; border: 1px solid #374151; color: #9ca3af; border-radius: 6px; font-size: 0.75rem; cursor: pointer; }
+        footer { padding: 80px 0 40px; border-top: 1px solid var(--border); text-align: center; }
+        .footer-logo { margin-bottom: 24px; display: inline-flex; }
+        .footer-links { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; color: var(--text-muted); }
+        .footer-links a:hover { color: var(--primary); }
+        .copyright { color: var(--text-muted); font-size: 0.9rem; }
+        [data-reveal] { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        [data-reveal].revealed { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; } .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 3rem; }
+            .gallery-content { flex-direction: column; text-align: center; padding: 32px 24px; }
+            .gallery-image { max-width: 260px; }
+            .footer-links { flex-direction: column; gap: 16px; }
+        }
+        .gallery-content { transition: opacity 0.3s ease, transform 0.3s ease; }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="logo/pai.svg" alt="pAI Logo"> <span>pAI</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a> <a href="#showcase">Gallery</a> <a href="#download">Download</a> <a href="https://github.com/lalithchary/pAI" target="_blank">GitHub</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme"><span id="theme-icon">🌙</span></button>
+            </div>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">☰</div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1 data-reveal>Your Personal AI Companion</h1>
+            <p data-reveal>A free, open-source Android app that puts powerful AI in your pocket. Secure, private, and customizable.</p>
+            <div class="btn-group" data-reveal>
+                <a href="https://github.com/lalithchary/pAI/releases" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download APK
+                </a>
+                <a href="https://github.com/lalithchary/pAI" target="_blank" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> GitHub
+                </a>
+            </div>
+            <div class="mockup-container" data-reveal><img src="screenshots/chat.png" alt="pAI Chat App" class="mockup"></div>
+        </div>
+    </header>
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title" data-reveal><h2>Everything you need</h2><p>Designed for privacy, flexibility, and speed.</p></div>
+            <div class="features-grid">
+                <div class="feature-card" data-reveal><span class="feature-icon">🤖</span><h3>Custom AI Chat</h3><p>Connect seamlessly with your favorite AI backends. Supports any OpenAI-compatible API endpoint.</p></div>
+                <div class="feature-card" data-reveal><span class="feature-icon">⚙️</span><h3>Configurable Backends</h3><p>Total control over system prompts, temperature, and API providers. Swap keys in seconds.</p></div>
+                <div class="feature-card" data-reveal><span class="feature-icon">🔒</span><h3>Security First</h3><p>Sensitive data like API keys are stored securely using the Android Keystore system.</p></div>
+                <div class="feature-card" data-reveal><span class="feature-icon">💾</span><h3>100% Local Data</h3><p>Your chats and settings never leave your device. Managed locally via Room Database.</p></div>
+                <div class="feature-card" data-reveal><span class="feature-icon">🎨</span><h3>Material You</h3><p>Modern Material Design 3 interface with full support for dynamic system theming.</p></div>
+                <div class="feature-card" data-reveal><span class="feature-icon">🚫</span><h3>No Ads or Tracking</h3><p>100% free and open-source. No telemetry, no ads. Just AI.</p></div>
+            </div>
+        </div>
+    </section>
+    <section id="showcase" class="showcase">
+        <div class="container">
+            <div class="section-title" data-reveal><h2>Experience pAI</h2><p>Clean, intuitive, and native Android experience.</p></div>
+            <div class="showcase-tabs" data-reveal>
+                <button class="tab-btn active" onclick="showGallery('chat')">Chat UI</button>
+                <button class="tab-btn" onclick="showGallery('config')">Configuration</button>
+                <button class="tab-btn" onclick="showGallery('settings')">Settings</button>
+                <button class="tab-btn" onclick="showGallery('history')">History</button>
+                <button class="tab-btn" onclick="showGallery('light')">Light Theme</button>
+            </div>
+            <div class="gallery-content revealed" id="gallery-content" data-reveal>
+                <img src="screenshots/chat.png" alt="Chat" class="gallery-image" id="gallery-img">
+                <div class="gallery-text">
+                    <h3 id="gallery-title">AI Chat Interface</h3>
+                    <p id="gallery-desc">Engage in fluid, intelligent conversations with your chosen AI models. Features full markdown support and instant streaming responses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="download" class="build-section">
+        <div class="container">
+            <div class="section-title" data-reveal><h2>Get Started</h2><p>Download the latest version or build it yourself.</p></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                <div class="feature-card" data-reveal><h3>Download APK</h3><p style="margin-bottom: 24px;">Install the latest stable release directly from GitHub.</p><a href="https://github.com/lalithchary/pAI/releases" class="btn btn-primary">Download from GitHub</a></div>
+                <div class="feature-card" data-reveal><h3>Build from Source</h3><p>Clone and build using Android Studio or Gradle.</p><div class="code-block"><button class="copy-btn" onclick="copyCode()">Copy</button><code id="build-code">git clone https://github.com/lalithchary/pAI.git
+cd pAI
+./gradlew assembleRelease</code></div></div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-logo"><a href="#" class="logo"><img src="logo/pai.svg" alt="pAI Logo"> <span>pAI</span></a></div>
+            <div class="footer-links"><a href="#features">Features</a> <a href="#showcase">Gallery</a> <a href="https://github.com/lalithchary/pAI/blob/main/LICENSE">License (GPLv3)</a> <a href="https://github.com/lalithchary/pAI/issues">Support</a></div>
+            <p class="copyright">Made with ❤️ by <a href="https://github.com/lalithchary" style="color:var(--text); font-weight:600;">lalithchary</a>. &copy; 2026 pAI Project.</p>
+        </div>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle'); const themeIcon = document.getElementById('theme-icon');
+        themeToggle.addEventListener('click', () => { document.body.classList.toggle('light-mode'); const isLight = document.body.classList.contains('light-mode'); themeIcon.textContent = isLight ? '☀️' : '🌙'; localStorage.setItem('theme', isLight ? 'light' : 'dark'); });
+        if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light-mode'); themeIcon.textContent = '☀️'; }
+        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+        const galleryData = {
+            'chat': { img: 'screenshots/chat.png', title: 'AI Chat Interface', desc: 'Engage in fluid, intelligent conversations with your chosen AI models. Features full markdown support and instant streaming responses.' },
+            'config': { img: 'screenshots/config.png', title: 'Server Configuration', desc: 'Complete control over your AI backends. Easily add, edit, or switch between different AI providers and API keys.' },
+            'settings': { img: 'screenshots/settings.png', title: 'Deep Customization', desc: 'Fine-tune your experience. Manage app behavior, theme preferences, and local data storage options with ease.' },
+            'history': { img: 'screenshots/chat_history.png', title: 'Chat History', desc: 'All your conversations are stored locally and securely. Quickly search and access previous chats whenever you need them.' },
+            'light': { img: 'screenshots/light_theme.png', title: 'Stunning Light Theme', desc: 'Native Material 3 implementation that adapts perfectly to your system settings, providing a clean interface for all environments.' }
+        };
+        function showGallery(key) {
+            const content = document.getElementById('gallery-content'); const img = document.getElementById('gallery-img'); const title = document.getElementById('gallery-title'); const desc = document.getElementById('gallery-desc');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.toggle('active', btn.textContent.toLowerCase().includes(key.substring(0, 3))));
+            content.style.opacity = '0'; content.style.transform = 'translateY(10px)';
+            setTimeout(() => { const data = galleryData[key]; img.src = data.img; title.textContent = data.title; desc.textContent = data.desc; content.style.opacity = '1'; content.style.transform = 'translateY(0)'; }, 300);
+        }
+        function copyCode() { const code = document.getElementById('build-code').textContent; navigator.clipboard.writeText(code).then(() => { const btn = document.querySelector('.copy-btn'); btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy', 2000); }); }
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => { const navLinks = document.querySelector('.nav-links'); navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.position = 'absolute'; navLinks.style.top = '70px'; navLinks.style.left = '0'; navLinks.style.width = '100%'; navLinks.style.background = 'var(--bg-nav)'; navLinks.style.padding = '20px'; });
+    </script>
+    <!-- END OF PAGE -->
+</body>
+</html>
